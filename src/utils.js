@@ -15,7 +15,9 @@ export const login = (credential) => {
         if (response.status !== 200) {
             throw Error('Fail to log in');
         }
-        // response is a object, turn the object into json-format
+        // response is a Response object
+        // when the fetch is successful, we read and parse the data using json()
+        // it will return us a promise that has been parsed into json
         return response.json();
     })
 }
