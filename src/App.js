@@ -3,10 +3,9 @@ import { LikeOutlined, FireOutlined } from '@ant-design/icons';
 import { Layout, message, Menu } from 'antd';
 import { logout, getFavoriteItem, getTopGames } from './utils';
 import PageHeader from './components/PageHeader'
-import CustomSearch from './components/CustomSearch';
 
 
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -16,6 +15,7 @@ function App() {
   useEffect(() => {
     getTopGames()
       .then((data) => {
+        // console.log(data)
         setTopGames(data)
       }).catch((err) => {
         message.error(err.message)
@@ -65,29 +65,23 @@ function App() {
 
   return (
     <Layout>
-      <Header>
       <PageHeader
           loggedIn={loggedIn}
           signoutOnClick={signoutOnClick}
           signinOnSuccess={signinOnSuccess}
           favoriteItems={favoriteItems}
         />
-      </Header>
       <Layout>
-        <Sider width={300} className="site-layout-background">
-        <CustomSearch onSuccess={() => {
-          
-        }} />
-        <Menu
+        <Sider width={300} className="sider-background" style={{minHeight: '100vh'}}>
+        <Menu 
             mode="inline"
             onSelect={() => { }}
-            style={{ marginTop: '10px' }}
             items={mapTopGamesToProps(topGames)}
           />
         </Sider>
-        <Layout style={{ padding: '24px' }}>
+        <Layout>
           <Content
-            className="site-layout-background"
+            className="content-background"
             style={{
               padding: 24,
               margin: 0,

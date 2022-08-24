@@ -26,7 +26,7 @@ function Register() {
  
   return (
     <>
-      <Button shape="round" type="primary" onClick={signupOnClick}>
+      <Button type="primary" onClick={signupOnClick}>
         Register</Button>
       <Modal
         title="Register"

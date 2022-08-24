@@ -1,6 +1,14 @@
 @import '~antd/dist/antd.css'; 
 
-.site-layout-background {
+
+.header-background{
+  background: white;
+}
+.sider-background{
+  background-color:#f0f2f5;
+}
+
+.content-background {
   background: #fff;
 }
  
@@ -9,3 +17,4 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+

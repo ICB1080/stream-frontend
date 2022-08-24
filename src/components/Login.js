@@ -27,7 +27,7 @@ function Login({ onSuccess }) {
  
   return (
     <>
-      <Button shape="round" onClick={signinOnClick} style={{ marginRight: '20px' }}>
+      <Button onClick={signinOnClick} style={{ marginRight: '20px' }}>
         Login
       </Button>
       <Modal

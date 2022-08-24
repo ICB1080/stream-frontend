@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import FavoriteItem from './FavoriteItem'
 import { Menu, Button, Drawer } from 'antd';
-import { EyeOutlined, YoutubeOutlined, VideoCameraOutlined, StarFilled } from '@ant-design/icons';
+import { EyeOutlined, YoutubeOutlined, VideoCameraOutlined, HeartFilled } from '@ant-design/icons';
  
 const { SubMenu } = Menu
  
@@ -19,7 +19,7 @@ function Favorites({ favoriteItems }) {
  
   return (
     <>
-      <Button type="primary" shape="round" onClick={onFavoriteClick} icon={<StarFilled />}>
+      <Button type="primary" onClick={onFavoriteClick} icon={<HeartFilled />}>
         My Favorites
       </Button>
       <Drawer
