@@ -5,7 +5,10 @@
   background: white;
 }
 .sider-background{
-  background-color:#f0f2f5;
+  /* background-color:#f0f2f5; */
+
+ background-color:#f0f2f5;
+ /* opacity: 0.6; */
 }
 
 .content-background {
@@ -17,4 +20,34 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.ant-menu-inline {
+  border: none;
+}
+.ant-layout-header{
+  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 1000;
+}
+.ant-btn-primary {
+  background-color: #9147ff;
+  border-color: #9147ff;
+}
+
+.ant-btn:hover{
+  color: #772ce8;
+  border-color: #772ce8;
+}
+
+.ant-btn-primary:hover{
+  color: #fff;
+  background: #772ce8;
+  border-color: #772ce8
+}
+
+.ant-menu-item-selected {
+  /* background-color: rgb(4,77,92) !important; */
+  color: black;
+}
+
 
