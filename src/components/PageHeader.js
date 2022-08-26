@@ -8,7 +8,7 @@ import CustomSearch from './CustomSearch'
 const { Header } = Layout
 
 // destructuring directly lets us get these arguments
-function PageHeader({ loggedIn, signoutOnClick, signinOnSuccess, favoriteItems }) {
+function PageHeader({ loggedIn, signoutOnClick, signinOnSuccess, favoriteItems, customSearchOnSuccess }) {
   return (
 
     <Header className='header-background' height="64px">
@@ -24,8 +24,7 @@ function PageHeader({ loggedIn, signoutOnClick, signinOnSuccess, favoriteItems }
         </Col>
         
         <Col>
-          <CustomSearch onSuccess={() => {
-          }} />
+          <CustomSearch  onSuccess={customSearchOnSuccess}/>
         </Col>
         <Col>
           {/* if loggedIn, show logout button */}
