@@ -96,7 +96,8 @@ function App() {
       label: "Popular Games",
       key: "popular_games",
       icon: <FireOutlined />,
-      children: topGames.map((game) => ({
+      children: topGames.map(
+        (game) => ({
         label: game.name,
         key: game.id,
         icon:
