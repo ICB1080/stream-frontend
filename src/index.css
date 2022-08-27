@@ -1,20 +1,19 @@
-@import '~antd/dist/antd.css'; 
+@import "~antd/dist/antd.css";
 
-
-.header-background{
+.header-background {
   background: white;
 }
-.sider-background{
+.sider-background {
   /* background-color:#f0f2f5; */
 
- background-color:#f0f2f5;
- /* opacity: 0.6; */
+  background-color: #f0f2f5;
+  /* opacity: 0.6; */
 }
 
 .content-background {
   background: #fff;
 }
- 
+
 .site-top-game-list ul {
   max-height: 700px;
   overflow-y: auto;
@@ -24,45 +23,41 @@
 .ant-menu-inline {
   border: none;
 }
-.ant-layout-header{
-  box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.15);
+.ant-layout-header {
+  box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.15);
   position: relative;
   z-index: 1000;
 }
-
 
 .ant-btn-primary {
   background-color: #9147ff;
   border-color: #9147ff;
 }
 
-.ant-btn-default:hover{
+.ant-btn-default:hover {
   color: #772ce8;
   border-color: #772ce8;
 }
-.ant-btn-default:focus{
+.ant-btn-default:focus {
   border-color: #9147ff;
   color: #9147ff;
 }
 
-.ant-btn-primary:hover{
+.ant-btn-primary:hover {
   color: #fff;
   background: #772ce8;
-  border-color: #772ce8
+  border-color: #772ce8;
 }
 
-.ant-btn-primary:focus{
+.ant-btn-primary:focus {
   color: #fff;
   background-color: #9147ff;
   border-color: #9147ff;
 }
 
-
 .ant-menu-item-selected {
-  /* background-color: rgb(4,77,92) !important; */
   color: black;
 }
-
 
 .ant-tabs-tab:hover {
   color: #772ce8;
@@ -79,7 +74,7 @@
   /* background-color: #e7d9f5; */
   color: black;
 }
-.ant-menu-item-selected{
+.ant-menu-item-selected {
   color: #772ce8;
 }
 
@@ -91,15 +86,16 @@
   color: #772ce8;
 }
 
-.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
   background-color: #f1edf5;
 }
 
-.ant-menu-inline .ant-menu-item::after{
+.ant-menu-inline .ant-menu-item::after {
   border-right: 3px solid #772ce8;
 }
 
-.ant-menu-submenu-arrow::before, .ant-menu-submenu-arrow::after{
+.ant-menu-submenu-arrow::before,
+.ant-menu-submenu-arrow::after {
   background-color: #772ce8;
 }
 
@@ -108,18 +104,24 @@
   background: #9147ff;
 }
 
-.ant-input:hover, .ant-input:focus, .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover{
+.ant-input:hover,
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover
+ {
   border-color: #9147ff;
 }
-.ant-menu-item a:hover{
+.ant-input-affix-wrapper:focus, 
+.ant-input-affix-wrapper-focused,
+.ant-input:focus
+{
+  box-shadow: 0 0 0 2px #f1edf5;
+  border-color: #9147ff;
+}
+
+.ant-menu-item a:hover {
   color: #9147ff;
 }
 
-.ant-menu-item:active, .ant-menu-submenu-title:active{
-  background-color:#f1edf5 ;
+.ant-menu-item:active,
+.ant-menu-submenu-title:active {
+  background-color: #f1edf5;
 }
-
-
-
-
-
