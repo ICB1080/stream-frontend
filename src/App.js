@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { LikeOutlined, FireOutlined } from '@ant-design/icons';
 import { Layout, message, Menu } from 'antd';
-import { 
-  logout, 
-  getFavoriteItem, 
-  getTopGames, 
+import {
+  logout,
+  getFavoriteItem,
+  getTopGames,
   searchGameById,
   getRecommendations
 } from './utils';
@@ -16,7 +16,9 @@ const { Content, Sider } = Layout;
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [favoriteItems, setFavoriteItems] = useState([]);
+  const [favoriteItems, setFavoriteItems] = useState({
+    VIDEO: [], STREAM: [], CLIP: []
+  });
   const [topGames, setTopGames] = useState([])
   // resources: data used in content of layout
   const [resources, setResources] = useState({
@@ -24,6 +26,15 @@ function App() {
     STREAM: [],
     CLIP: [],
   });
+
+  useEffect(() => {
+    getRecommendations()
+    .then((data) => {
+      setResources(data)
+    }).catch((err) =>
+      message.error(err.message)
+    )
+  }, [])
 
 
   useEffect(() => {
@@ -40,6 +51,7 @@ function App() {
   const signinOnSuccess = () => {
     setLoggedIn(true);
     getFavoriteItem().then((data) => {
+      console.log(data);
       setFavoriteItems(data);
     });
   }
@@ -60,14 +72,14 @@ function App() {
   const onGameSelect = ({ key }) => {
     // menu has two choices: 
     // 1. recommendation
-    // 2. popular games
     if (key === "recommendation") {
       getRecommendations().then((data) => {
         setResources(data);
       });
- 
+
       return;
     }
+    // 2. popular games
     searchGameById(key).then((data) => {
       setResources(data);
     });
@@ -98,15 +110,15 @@ function App() {
       icon: <FireOutlined />,
       children: topGames.map(
         (game) => ({
-        label: game.name,
-        key: game.id,
-        icon:
-          <img
-            alt="placeholder"
-            src={game.box_art_url.replace('{height}', '40').replace('{width}', '40')}
-            style={{ borderRadius: '50%', marginRight: '20px' }}
-          />
-      }))
+          label: game.name,
+          key: game.id,
+          icon:
+            <img
+              alt="placeholder"
+              src={game.box_art_url.replace('{height}', '40').replace('{width}', '40')}
+              style={{ borderRadius: '50%', marginRight: '20px' }}
+            />
+        }))
     }
   ]
 
@@ -114,15 +126,16 @@ function App() {
   return (
     <Layout>
       <PageHeader
-          loggedIn={loggedIn}
-          signoutOnClick={signoutOnClick}
-          signinOnSuccess={signinOnSuccess}
-          favoriteItems={favoriteItems}
-          customSearchOnSuccess={customSearchOnSuccess}
-        />
+        loggedIn={loggedIn}
+        signoutOnClick={signoutOnClick}
+        signinOnSuccess={signinOnSuccess}
+        favoriteItems={favoriteItems}
+        customSearchOnSuccess={customSearchOnSuccess}
+        favOnChange={favoriteOnChange}
+      />
       <Layout>
-        <Sider width={300} className="sider-background" style={{minHeight: '100vh'}}>
-        <Menu 
+        <Sider width={300} className="sider-background" style={{ minHeight: '100vh' }}>
+          <Menu
             mode="inline"
             onSelect={onGameSelect}
             items={mapTopGamesToProps(topGames)}
@@ -138,7 +151,7 @@ function App() {
               overflow: 'auto'
             }}
           >
-             <Home
+            <Home
               resources={resources}
               loggedIn={loggedIn}
               favoriteItems={favoriteItems}

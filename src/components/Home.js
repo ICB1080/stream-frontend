@@ -20,10 +20,15 @@ const processUrl = (url) => url
 
 
 
-const fav = (item, favs= [], loggedIn, favOnChange) => {
+const favIcon = (item, favs= [], loggedIn, favOnChange) => {
+    // find function returns the first element that passes the test
     const isFav = favs.find((fav) => fav.id === item.id);
+    // console.log(favs)
     const favOnClick = () => {
         if (isFav) {
+            // after adding or deleting, trigger rerender
+            // advantage: keep data corresponding with database in frontend
+            // disadvantage: slow
             deleteFavoriteItem(item).then(() => {
                 favOnChange();
             }).catch(err => {
@@ -40,15 +45,15 @@ const fav = (item, favs= [], loggedIn, favOnChange) => {
     }
     return (
         // if loggedin, 
-                // if fav -> popup tip: remove from favourite
-                // if !fav -> popup tip: add to favourite
+        // if fav -> popup tip: remove from favourite
+        // if !fav -> popup tip: add to favourite
         <>
-        {loggedIn &&
+            {loggedIn &&
                 <Tooltip title={isFav ? "Remove from My Favorites" : "Add to My Favorites"}>
                     <Button shape="circle" icon={isFav ? <StarFilled /> : <StarOutlined />}
                         onClick={favOnClick}
                     />
-                </Tooltip>} 
+                </Tooltip>}
         </>
     )
 }
@@ -75,8 +80,8 @@ const renderCardGrid = (data, loggedIn, favs, favOnChange) => {
             grid={{
                 xs: 1,
                 sm: 2,
-                md: 4,
-                lg: 4,
+                md: 2,
+                lg: 3,
                 xl: 3,
                 xxl: 3
             }}
@@ -85,7 +90,7 @@ const renderCardGrid = (data, loggedIn, favs, favOnChange) => {
                 <List.Item style={{ marginRight: '20px' }}>
                     <Card
                         title={renderCardTitle(item)}
-                        extra={fav(item, favs, loggedIn, favOnChange)}
+                        extra={favIcon(item, favs, loggedIn, favOnChange)}
                     >
                         <a href={item.url} target="_blank" rel="noopener noreferrer">
                             <img
@@ -102,6 +107,7 @@ const renderCardGrid = (data, loggedIn, favs, favOnChange) => {
 }
 
 const Home = ({ resources, loggedIn, favoriteItems, favOnChange }) => {
+    // when loggedIn = true, fav button appears
     const { VIDEO, STREAM, CLIP } = resources;
     const { VIDEO: favVideos, STREAM: favStreams, CLIP: favClips } = favoriteItems;
 
