@@ -47,13 +47,21 @@ function App() {
       })
   }, [])
 
+  const favoriteOnChange = () => {
+    // rerender My favorite data from backend
+    getFavoriteItem()
+      .then((data) => {
+        setFavoriteItems(data);
+      })
+      .catch((err) => {
+        message.error(err.message);
+      });
+  };
+
 
   const signinOnSuccess = () => {
     setLoggedIn(true);
-    getFavoriteItem().then((data) => {
-      console.log(data);
-      setFavoriteItems(data);
-    });
+    favoriteOnChange();
   }
 
   const signoutOnClick = () => {
@@ -84,19 +92,6 @@ function App() {
       setResources(data);
     });
   };
-
-  const favoriteOnChange = () => {
-    getFavoriteItem()
-      .then((data) => {
-        setFavoriteItems(data);
-      })
-      .catch((err) => {
-        message.error(err.message);
-      });
-  };
-
-
-
 
   const mapTopGamesToProps = (topGames) => [
     {

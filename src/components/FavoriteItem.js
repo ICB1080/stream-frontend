@@ -9,7 +9,7 @@ function FavoriteItem({ items, favOnChange }) {
 
   const onFavoriteDelete = (item, favOnChange) => {
     deleteFavoriteItem(item).then(
-      () => {favOnChange()}
+      () => favOnChange()
     ).catch(err => message.error(err.message))
   }
   return items.map((item) => (
@@ -21,7 +21,7 @@ function FavoriteItem({ items, favOnChange }) {
           </a >
         </Col>
         <Col>
-          <Button icon={<DeleteOutlined />} onClick={()=>{onFavoriteDelete(item, favOnChange)}} ></Button>
+          <Button icon={<DeleteOutlined />} onClick={() => { onFavoriteDelete(item, favOnChange) }} ></Button>
         </Col>
       </Row>
     </Menu.Item>

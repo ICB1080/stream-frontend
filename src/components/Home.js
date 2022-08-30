@@ -20,6 +20,7 @@ const processUrl = (url) => url
 
 
 
+
 const favIcon = (item, favs= [], loggedIn, favOnChange) => {
     // find function returns the first element that passes the test
     const isFav = favs.find((fav) => fav.id === item.id);
