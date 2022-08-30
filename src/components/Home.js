@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, List, Tabs, Tooltip, message } from 'antd';
+import { Button, Card, List, Tabs, Tooltip, message} from 'antd';
 import { StarOutlined, StarFilled } from '@ant-design/icons';
 import { addFavoriteItem, deleteFavoriteItem } from '../utils';
 
@@ -21,7 +21,7 @@ const processUrl = (url) => url
 
 
 
-const favIcon = (item, favs= [], loggedIn, favOnChange) => {
+const favIcon = (item, favs = [], loggedIn, favOnChange) => {
     // find function returns the first element that passes the test
     const isFav = favs.find((fav) => fav.id === item.id);
     // console.log(favs)
@@ -66,11 +66,11 @@ const renderCardTitle = (item) => {
     return (
         <>
             {/* show popup tip of title when mouse enter title */}
-            <div style={{ overflow: 'hidden', textOverflow: 'ellipsis', width: 450 }}>
-                <Tooltip title={title}>
-                    <span>{title}</span>
-                </Tooltip>
-            </div>
+                    <div style={{ overflow: 'hidden', textOverflow: 'ellipsis',width:"auto"}}>
+                        <Tooltip title={title}>
+                            <span>{title}</span>
+                        </Tooltip>
+                    </div>
         </>
     )
 }
