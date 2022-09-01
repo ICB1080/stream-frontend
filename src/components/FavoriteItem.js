@@ -15,9 +15,11 @@ function FavoriteItem({ items, favOnChange }) {
   return items.map((item) => (
     <Menu.Item key={item.id}>
       <Row justify="space-between">
-        <Col>
-          <a href={item.url} target="_blank" rel="noopener noreferrer">
-            {`${item.broadcaster_name} - ${item.title}`}
+        <Col style={{maxWidth: "600px"}}>
+          <a href={item.url} target="_blank" rel="noopener noreferrer" >
+            <div style={{textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: "nowrap"}}>
+              {`${item.broadcaster_name} - ${item.title}`}
+            </div>
           </a >
         </Col>
         <Col>
