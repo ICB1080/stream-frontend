@@ -1,3 +1,15 @@
+# Stream-frontend
+
+An application for users to find popular Twitch resources and get recommendations
+
+has been deployed at: http://52.15.34.235/
+
+
+
+
+
+------
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
